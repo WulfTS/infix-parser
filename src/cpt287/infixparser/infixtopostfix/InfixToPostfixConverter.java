@@ -7,28 +7,76 @@ import java.util.Stack;
 
 public class InfixToPostfixConverter {
     /**
-     *
      * @param current
      * @param top
      * @return true if precedence of current <= top
      */
-    //TODO: Complete me.
-    private boolean precedence(String current, String top){
-        if(top.equals("^")){
+    //TODO: Check to see if I work.
+    private boolean precedence(String current, String top) {
+        if (top.equals("^")) {
             return true;
-        } else if (top.equals("*") || top.equals("/")|| top.equals("%")){
-            if(current.equals("^")){
+        } else if (top.equals("*") || top.equals("/") || top.equals("%")) {
+            if (current.equals("^")) {
                 return false;
             } else return true;
-        } else if (top.equals("+") || top.equals("-")){
-            if(current.equals("^") || current.equals("*") || current.equals("/") || current.equals("%")){
+        } else if (top.equals("+") || top.equals("-")) {
+            if (current.equals("^") || current.equals("*") || current.equals("/") || current.equals("%")) {
                 return false;
             } else {
                 return true;
             }
-        }
+        } else if (top.equals(">") || top.equals("<") || top.equals(">=") || top.equals("<=")) {
+            if (current.equals("^") || current.equals("*") || current.equals("/") || current.equals("%") || current.equals("+") || current.equals("-")) {
+                return false;
+            } else {
+                return true;
+            }
+        } else if (top.equals("==") || top.equals("!=")) {
+            if (current.equals("^")
+                    || current.equals("*")
+                    || current.equals("/")
+                    || current.equals("%")
+                    || current.equals("+")
+                    || current.equals("-")
+                    || current.equals(">")
+                    || current.equals("<")
+                    || current.equals(">=")
+                    || current.equals("<=")) {
+                return false;
+            } else {
+                return true;
+            }
 
+        } else if (top.equals("&&")) {
+            if (current.equals("^")
+                    || current.equals("*")
+                    || current.equals("/")
+                    || current.equals("%")
+                    || current.equals("+")
+                    || current.equals("-")
+                    || current.equals(">")
+                    || current.equals("<")
+                    || current.equals(">=")
+                    || current.equals("<=")
+                    || current.equals("==")
+                    || current.equals("!=")) {
+                return false;
+            } else {
+                return true;
+            }
+        } else if (top.equals("||")) {
+            if (current.equals("||")) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
     }
+
+
+
 
 
 
