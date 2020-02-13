@@ -89,7 +89,7 @@ public class InfixToPostfixConverter {
         String postfixString = "";
 
         Stack<String> tempStack = new Stack<>();
-        List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||");
+        List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||", "&&");
 
         while(!userInputQueue.isEmpty()) {
             if (userInputQueue.peek().charAt(0) >= '0' && userInputQueue.peek().charAt(0) <= '9') {
