@@ -34,7 +34,7 @@ public class InputHandler {
 
             if(value >= '0' && value <='9'){
                 number = number + value;
-                if(operator != ""){
+                if(!operator.equals("")){
                     outputQueue.offer(operator);
                     operator = "";
                 }
@@ -43,7 +43,15 @@ public class InputHandler {
                     outputQueue.offer(number);
                     number = "";
                 }
-                operator = operator + value;
+                if(value.equals('(') || value.equals('[') || value.equals(')') || value.equals(']')){
+                    if(!operator.equals("")) {
+                        outputQueue.offer(operator);
+                        operator = "";
+                    }
+                    outputQueue.offer(Character.toString(value));
+                } else {
+                    operator = operator + value;
+                }
             } else {
                 System.out.println("You entered an invalid expression to evaluate.  \n" +
                         "Please try again and do not include any letter variables.");

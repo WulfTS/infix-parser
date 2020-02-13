@@ -20,13 +20,21 @@ public class InfixToPostfixConverter {
                 return false;
             } else return true;
         } else if (top.equals("+") || top.equals("-")) {
-            if (current.equals("^") || current.equals("*") || current.equals("/") || current.equals("%")) {
+            if (current.equals("^")
+                    || current.equals("*")
+                    || current.equals("/")
+                    || current.equals("%")) {
                 return false;
             } else {
                 return true;
             }
         } else if (top.equals(">") || top.equals("<") || top.equals(">=") || top.equals("<=")) {
-            if (current.equals("^") || current.equals("*") || current.equals("/") || current.equals("%") || current.equals("+") || current.equals("-")) {
+            if (current.equals("^")
+                    || current.equals("*")
+                    || current.equals("/")
+                    || current.equals("%")
+                    || current.equals("+")
+                    || current.equals("-")) {
                 return false;
             } else {
                 return true;
@@ -76,28 +84,34 @@ public class InfixToPostfixConverter {
     }
 
 
-
-
-
-
-    // TODO: Complete me
+    // TODO: Complete me & fix the problem I'm having with parenthesis;
     public String convertInfixToPostfix(Queue<String> userInputQueue){
         String postfixString = "";
 
         Stack<String> tempStack = new Stack<>();
         List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||");
 
-        while(userInputQueue.size() > 0) {
+        while(!userInputQueue.isEmpty()) {
             if (userInputQueue.peek().charAt(0) >= '0' && userInputQueue.peek().charAt(0) <= '9') {
                 postfixString = postfixString + userInputQueue.poll();
+                postfixString = postfixString + " ";
             } else if (userInputQueue.peek().equals("(")){
                 tempStack.push(userInputQueue.poll());
             } else if (operators.contains(userInputQueue.peek())){
-                while (!userInputQueue.isEmpty() && !userInputQueue.peek().equals("(") && precedence(userInputQueue.peek(),tempStack.peek())){
+                while (!tempStack.isEmpty() && !tempStack.peek().equals("(") && precedence(userInputQueue.peek(),tempStack.peek())){
+                    postfixString = postfixString + tempStack.pop() + " ";
                 }
+                tempStack.push(userInputQueue.poll());
+            } else{
+                while (!tempStack.peek().equals("(")){
+                    postfixString = postfixString + tempStack.pop() + " ";
+                }
+                tempStack.pop();
             }
         }
-
+        while (!tempStack.isEmpty()){
+            postfixString = postfixString + tempStack.pop() + " ";
+        }
         return postfixString;
     }
 
