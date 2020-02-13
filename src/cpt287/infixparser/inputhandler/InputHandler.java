@@ -8,7 +8,7 @@ public class InputHandler {
 
     Queue<String> outputQueue= new LinkedList<String>();
 
-    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!');
+    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
 
     public Queue<String> getUserInput() {
 
@@ -26,7 +26,7 @@ public class InputHandler {
             inputQueue.offer(equationString.charAt(i));
         }
 
-        // generate output queue consisting of numbers & operators
+        // generate output queue consisting of numbers, operators, and parenthesis
         String number = "";
         String operator = "";
         while (!inputQueue.isEmpty()){
