@@ -7,9 +7,13 @@ public class InputHandler {
 
     Scanner scanner = new Scanner(System.in);
 
-    public Queue<Character> getUserInput() {
+    Queue<String> outputQueue= new LinkedList<String>();
 
-        System.out.println("Please enter an equation to evaluate: ");
+    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|');
+
+    public Queue<String> getUserInput() {
+
+        System.out.println("Please enter an expression to evaluate: ");
         // get user input
         String equationString = scanner.nextLine();
         // remove white space
@@ -22,6 +26,29 @@ public class InputHandler {
         for(int i = 0; i < equationString.length(); i++){
             inputQueue.offer(equationString.charAt(i));
         }
-        return inputQueue;
+
+        // generate output queue consisting of numbers & operators
+        String number = "";
+        while (!inputQueue.isEmpty()){
+            Character value = inputQueue.poll();
+
+            if(value >= '0' && value <='9'){
+                number = number + value;
+            } else if(validCharacters.contains(value)) {
+                if(number != ""){
+                    outputQueue.offer(number);
+                    number = "";
+                }
+                outputQueue.offer(Character.toString(value));
+            } else {
+                System.out.println("You entered an invalid expression to evaluate.  \n" +
+                        "Please try again and do not include any letter variables.");
+                getUserInput();
+            }
+        }
+        if(number != ""){
+            outputQueue.offer(number);
+        }
+        return outputQueue;
     }
 }
