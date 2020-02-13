@@ -1,52 +1,27 @@
 package cpt287.infixparser.inputhandler;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
+import java.util.concurrent.ArrayBlockingQueue;
 
 public class InputHandler {
 
     Scanner scanner = new Scanner(System.in);
 
-    public List<String> getUserInput() {
+    public Queue<Character> getUserInput() {
 
         System.out.println("Please enter an equation to evaluate: ");
+        // get user input
+        String equationString = scanner.nextLine();
+        // remove white space
+        equationString = equationString.replaceAll(" ", "");
 
-                String equationString = scanner.nextLine();
-                equationString.replaceAll("\\s+","");
+        // Queue to store user input characters
+        Queue<Character> inputQueue = new LinkedList<Character>();
 
-                String number = "";
-
-                String comparisonString = "";
-
-                List<Character> operators = Arrays.asList('+','-','*','/','%','^','(','[',')',']');
-
-                List<Character>  comparisons = Arrays.asList('=','>','<','!','|');
-
-                List<String> formula = Arrays.asList();
-
-                System.out.println("EquationString : " + equationString);
-
-        for (int i = 0; i < equationString.length(); i++) {
-            System.out.println("Character : " + equationString.charAt(i));
-            if(equationString.charAt(i) >= '0' && equationString.charAt(i) <= '9'){
-                number = number + equationString.charAt(i);
-            } else if(operators.contains(equationString.charAt(i))) {
-                formula.add(number);
-                number = "";
-                formula.add(Character.toString(equationString.charAt(i)));
-            } else if(comparisons.contains(equationString.charAt(i)) && comparisons.contains(equationString.charAt(i + 1))){
-                formula.add(number);
-                number = "";
-                comparisonString = comparisonString + equationString.charAt(i) + equationString.charAt(i+1);
-                formula.add(comparisonString);
-                comparisonString = "";
-            }
+        // add characters from input string to Queue
+        for(int i = 0; i < equationString.length(); i++){
+            inputQueue.offer(equationString.charAt(i));
         }
-        if(number != ""){
-            formula.add(number);
-        }
-
-        return formula;
+        return inputQueue;
     }
 }
