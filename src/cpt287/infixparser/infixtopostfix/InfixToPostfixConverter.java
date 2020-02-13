@@ -7,8 +7,8 @@ import java.util.Stack;
 
 public class InfixToPostfixConverter {
     /**
-     * @param current
-     * @param top
+     * @param current String operator
+     * @param top operator at top of temp stack to compare current operator to
      * @return true if precedence of current <= top
      */
     //TODO: Check to see if I work.

@@ -1,7 +1,6 @@
 package cpt287.infixparser.postfixevaluator;
 
 import cpt287.infixparser.handleOneOperation.HandleOneOperation;
-import cpt287.infixparser.inputhandler.InputHandler;
 
 import java.util.*;
 
@@ -30,7 +29,7 @@ public class PostfixEvaluator {
                 // is an operator
                 Integer rightVal = Integer.parseInt(tempStack.pop());
                 Integer leftVal = Integer.parseInt(tempStack.pop());
-                String operator = postFixQueue.poll().trim();
+                String operator = postFixQueue.poll();
 
                 Integer result = handleOneOperation.handleOneOperation(leftVal,rightVal,operator);
 

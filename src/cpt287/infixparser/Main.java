@@ -6,11 +6,14 @@ import cpt287.infixparser.inputhandler.InputHandler;
 import cpt287.infixparser.postfixevaluator.PostfixEvaluator;
 
 import java.util.Queue;
-
+// TODO: Add functionality to elegantly handle divide by zero issues
+// TODO : Add functionality to handle && and || comparisons
+// TODO: Fix Infix to Postfix Converter to properly handle parentheses
+// TODO: Add Comments & general code cleanup & refactoring
+// TODO: Double check that everything is working correctly
 public class Main {
 
     public static void main(String[] args) {
-	// write your code here
         InputHandler inputHandler = new InputHandler();
         HandleOneOperation handleOneOperation = new HandleOneOperation();
         InfixToPostfixConverter infixToPostfixConverter = new InfixToPostfixConverter();

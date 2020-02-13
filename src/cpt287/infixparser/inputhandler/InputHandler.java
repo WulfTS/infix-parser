@@ -19,7 +19,7 @@ public class InputHandler {
         return stringToQueue(equationString);
     }
 
-    public Queue<String> stringToQueue(String inputString){
+    private Queue<String> stringToQueue(String inputString){
         // remove white space
         inputString = inputString.replaceAll(" ","");
 

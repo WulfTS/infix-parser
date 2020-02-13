@@ -2,11 +2,11 @@ package cpt287.infixparser.handleOneOperation;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Queue;
 
 public class HandleOneOperation {
 
-    //TODO: Complete this;
+    //TODO: Complete this.  Needs to handle ||, && check to see if it works with comparators
+    // with the boolean results;
     public Integer handleOneOperation(Integer leftVal, Integer rightVal, String oper){
         Integer leftInt = leftVal;
         Integer rightInt = rightVal;
