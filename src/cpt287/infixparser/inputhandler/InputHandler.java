@@ -1,7 +1,6 @@
 package cpt287.infixparser.inputhandler;
 
 import java.util.*;
-import java.util.concurrent.ArrayBlockingQueue;
 
 public class InputHandler {
 
@@ -9,7 +8,7 @@ public class InputHandler {
 
     Queue<String> outputQueue= new LinkedList<String>();
 
-    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|');
+    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!');
 
     public Queue<String> getUserInput() {
 
@@ -29,17 +28,22 @@ public class InputHandler {
 
         // generate output queue consisting of numbers & operators
         String number = "";
+        String operator = "";
         while (!inputQueue.isEmpty()){
             Character value = inputQueue.poll();
 
             if(value >= '0' && value <='9'){
                 number = number + value;
+                if(operator != ""){
+                    outputQueue.offer(operator);
+                    operator = "";
+                }
             } else if(validCharacters.contains(value)) {
                 if(number != ""){
                     outputQueue.offer(number);
                     number = "";
                 }
-                outputQueue.offer(Character.toString(value));
+                operator = operator + value;
             } else {
                 System.out.println("You entered an invalid expression to evaluate.  \n" +
                         "Please try again and do not include any letter variables.");
