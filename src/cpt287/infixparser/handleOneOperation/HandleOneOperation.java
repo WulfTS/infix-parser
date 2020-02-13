@@ -7,28 +7,15 @@ import java.util.Queue;
 public class HandleOneOperation {
 
     //TODO: Complete this;
-    public double handleOneOperation(Queue<String> userInputQueue){
-        Integer leftInt = null;
-        Integer rightInt = null;
-        String operator = null;
-        String comparator = null;
+    public Integer handleOneOperation(Integer leftVal, Integer rightVal, String oper){
+        Integer leftInt = leftVal;
+        Integer rightInt = rightVal;
+        String operator = oper;
 
-        List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||");
+        List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||", "&&");
 
 
-        double result = -1;
-
-       if(userInputQueue.peek().charAt(0) >='0' && userInputQueue.peek().charAt(0) <='9'){
-           leftInt = Integer.parseInt(userInputQueue.poll());
-       }
-
-       if(operators.contains(userInputQueue.peek()) ){
-           operator = userInputQueue.poll();
-       }
-
-       if(userInputQueue.peek().charAt(0) >='0' && userInputQueue.peek().charAt(0) <='9'){
-            rightInt = Integer.parseInt(userInputQueue.poll());
-       }
+        Integer result = -1;
 
        // perform operations
        if(operator.equals("+")) {
@@ -40,7 +27,7 @@ public class HandleOneOperation {
        } else if (operator.equals("/")){
            result = leftInt / rightInt;
        } else if (operator.equals("^")){
-           result = Math.pow(leftInt,rightInt);
+           result = (int)Math.pow(leftInt,rightInt);
        } else if (operator.equals("%")){
            result = leftInt % rightInt;
        } else if (operator.equals(">")){

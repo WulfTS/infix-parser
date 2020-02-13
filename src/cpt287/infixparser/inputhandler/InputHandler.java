@@ -15,15 +15,20 @@ public class InputHandler {
         System.out.println("Please enter an expression to evaluate: ");
         // get user input
         String equationString = scanner.nextLine();
+
+        return stringToQueue(equationString);
+    }
+
+    public Queue<String> stringToQueue(String inputString){
         // remove white space
-        equationString = equationString.replaceAll(" ", "");
+        inputString = inputString.replaceAll(" ","");
 
         // Queue to store user input characters
         Queue<Character> inputQueue = new LinkedList<Character>();
 
         // add characters from input string to Queue
-        for(int i = 0; i < equationString.length(); i++){
-            inputQueue.offer(equationString.charAt(i));
+        for(int i = 0; i < inputString.length(); i++){
+            inputQueue.offer(inputString.charAt(i));
         }
 
         // generate output queue consisting of numbers, operators, and parenthesis
