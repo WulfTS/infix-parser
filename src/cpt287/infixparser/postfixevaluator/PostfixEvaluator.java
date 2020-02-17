@@ -30,7 +30,11 @@ public class PostfixEvaluator {
                 Integer rightVal = Integer.parseInt(tempStack.pop());
                 Integer leftVal = Integer.parseInt(tempStack.pop());
                 String operator = postFixQueue.poll();
-
+                // divide by zero found
+                if (rightVal == 0 && operator.compareTo("/") == 0){
+                    System.out.println("Divide by zero not allowed, evaluation of expression cancelled.");
+                    break;
+                }
                 Integer result = handleOneOperation.handleOneOperation(leftVal,rightVal,operator);
 
                 tempStack.push(result.toString());
