@@ -4,11 +4,11 @@ import java.util.*;
 
 public class InputHandler {
 
-    Scanner scanner = new Scanner(System.in);
+    public  Scanner scanner = new Scanner(System.in);
 
-    Queue<String> outputQueue= new LinkedList<String>();
+    private Queue<String> outputQueue= new LinkedList<String>();
 
-    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
+    private List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
 
     public Queue<String> getUserInput() {
 

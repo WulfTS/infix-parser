@@ -1,8 +1,5 @@
 package cpt287.infixparser.handleOneOperation;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class HandleOneOperation {
 
     //TODO: Complete this.  Needs to handle ||, && check to see if it works with comparators
@@ -11,9 +8,6 @@ public class HandleOneOperation {
         Integer leftInt = leftVal;
         Integer rightInt = rightVal;
         String operator = oper;
-
-        List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||", "&&");
-
 
         Integer result = -1;
 

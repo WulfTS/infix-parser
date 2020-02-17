@@ -1,6 +1,5 @@
 package cpt287.infixparser;
 
-import cpt287.infixparser.handleOneOperation.HandleOneOperation;
 import cpt287.infixparser.infixtopostfix.InfixToPostfixConverter;
 import cpt287.infixparser.inputhandler.InputHandler;
 import cpt287.infixparser.postfixevaluator.PostfixEvaluator;
@@ -15,7 +14,6 @@ public class Main {
 
     public static void main(String[] args) {
         InputHandler inputHandler = new InputHandler();
-        HandleOneOperation handleOneOperation = new HandleOneOperation();
         InfixToPostfixConverter infixToPostfixConverter = new InfixToPostfixConverter();
         PostfixEvaluator postfixEvaluator = new PostfixEvaluator();
 
@@ -28,6 +26,8 @@ public class Main {
         System.out.println("Postfix string: " + postfixString);
 
         System.out.println("Result: " + postfixEvaluator.evaluatePostfix(postfixString));
+
+        inputHandler.scanner.close();
 
     }
 }

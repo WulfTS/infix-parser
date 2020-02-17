@@ -5,7 +5,7 @@ import cpt287.infixparser.handleOneOperation.HandleOneOperation;
 import java.util.*;
 
 public class PostfixEvaluator {
-    HandleOneOperation handleOneOperation = new HandleOneOperation();
+    private HandleOneOperation handleOneOperation = new HandleOneOperation();
 
     public Integer evaluatePostfix(String postFix){
 
