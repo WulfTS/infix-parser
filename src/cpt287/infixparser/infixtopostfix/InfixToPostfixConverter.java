@@ -83,8 +83,6 @@ public class InfixToPostfixConverter {
         }
     }
 
-
-    // TODO: Complete me & fix the problem I'm having with parenthesis;
     public String convertInfixToPostfix(Queue<String> userInputQueue){
         String postfixString = "";
 
@@ -102,7 +100,16 @@ public class InfixToPostfixConverter {
                     postfixString = postfixString + tempStack.pop() + " ";
                 }
                 tempStack.push(userInputQueue.poll());
-            } else{
+           } else if (userInputQueue.peek().equals(")")){
+                while (!tempStack.isEmpty() && !tempStack.peek().equals("("){
+                    postfixString = postfixString + tempStack.pop();
+                    postfixString = postfixString + " ";
+                }
+                if (tempStack.peek().equals("(")) {
+                    tempStack.pop();
+                    userInputQueue.poll();
+                }
+           } else{
                 while (!tempStack.peek().equals("(")){
                     postfixString = postfixString + tempStack.pop() + " ";
                 }
