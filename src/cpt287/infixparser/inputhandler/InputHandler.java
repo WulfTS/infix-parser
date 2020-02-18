@@ -22,15 +22,6 @@ public class InputHandler {
         }
         return qStr;
     }
-    // a method to take user input from the console and then pass to evaluate the given expression
-    public Queue<String> getUserInput() {
-
-        System.out.println("Please enter an expression to evaluate: ");
-        // get user input
-        String equationString = scanner.nextLine();
-
-        return stringToQueue(equationString);
-    }
 
     private Queue<String> stringToQueue(String inputString){
         // create new outputQueue every time method is called for multiple expressions in text file
