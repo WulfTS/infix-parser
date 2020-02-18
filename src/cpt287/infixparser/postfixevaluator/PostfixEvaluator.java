@@ -12,6 +12,7 @@ public class PostfixEvaluator {
 
         List<String> postFixList = Arrays.asList(postFix.split(" "));
 
+        // for loop clean up white spaces
         for(String item : postFixList){
             postFixQueue.offer(item.trim());
         }
@@ -19,7 +20,7 @@ public class PostfixEvaluator {
         System.out.println("PostfixQueue: " + postFixQueue);
 
         Stack<String> tempStack = new Stack<>();
-
+        // stack to handle postfix
         while (!postFixQueue.isEmpty()){
             if(postFixQueue.peek().charAt(0) >= '0' && postFixQueue.peek().charAt(0) <='9'){
                 // number

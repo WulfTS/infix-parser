@@ -7,7 +7,7 @@ public class InputHandler {
 
     public  Scanner scanner = new Scanner(System.in);
     private List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
-
+    //uses buffered reader to get expressions from input file and store them in a list of queues of strings
     public List<Queue<String>> getInputFromTextFile() throws IOException {
         ArrayList<Queue<String>> qStr = new ArrayList<Queue<String>>();
 
@@ -16,11 +16,13 @@ public class InputHandler {
         BufferedReader br = new BufferedReader(new FileReader(file));
 
         String st;
+        // while loop that adds expressions to queue until empty line
         while ((st = br.readLine()) != null){
             qStr.add(stringToQueue(st));
         }
         return qStr;
     }
+    // a method to take user input from the console and then pass to evaluate the given expression
     public Queue<String> getUserInput() {
 
         System.out.println("Please enter an expression to evaluate: ");
@@ -70,10 +72,11 @@ public class InputHandler {
                 } else {
                     operator = operator + value;
                 }
+                // data validation for letters, exits if found, takes precedence over divide by zero
             } else {
                 System.out.println("You entered an invalid expression to evaluate.  \n" +
-                        "Please try again and do not include any letter variables.");
-                getUserInput();
+                        "Please correct the input file and do not include any letter variables.");
+                System.exit(-1);
             }
         }
         if(number != ""){

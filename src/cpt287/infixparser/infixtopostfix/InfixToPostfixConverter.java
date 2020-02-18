@@ -11,7 +11,6 @@ public class InfixToPostfixConverter {
      * @param top operator at top of temp stack to compare current operator to
      * @return true if precedence of current <= top
      */
-    //TODO: Check to see if I work.
     private boolean precedence(String current, String top) {
         if (top.equals("^")) {
             return true;
@@ -82,17 +81,18 @@ public class InfixToPostfixConverter {
             return false;
         }
     }
-
+    // convert infix to postfix using a stack and return postfix as a string
     public String convertInfixToPostfix(Queue<String> userInputQueue){
         String postfixString = "";
 
         Stack<String> tempStack = new Stack<>();
         List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||", "&&");
-
+        // while loop if the input queue is not empty
         while(!userInputQueue.isEmpty()) {
             if (userInputQueue.peek().charAt(0) >= '0' && userInputQueue.peek().charAt(0) <= '9') {
                 postfixString = postfixString + userInputQueue.poll();
                 postfixString = postfixString + " ";
+                //check top of stack for opening parenthesis
             } else if (userInputQueue.peek().equals("(")){
                 tempStack.push(userInputQueue.poll());
             } else if (operators.contains(userInputQueue.peek())){
@@ -100,6 +100,7 @@ public class InfixToPostfixConverter {
                     postfixString = postfixString + tempStack.pop() + " ";
                 }
                 tempStack.push(userInputQueue.poll());
+                //check top of stack for closing parenthesis
            } else if (userInputQueue.peek().equals(")")){
                 while (!tempStack.isEmpty() && !tempStack.peek().equals("(")){
                     postfixString = postfixString + tempStack.pop();
@@ -116,6 +117,7 @@ public class InfixToPostfixConverter {
                 tempStack.pop();
             }
         }
+        // while loop to take top of stack and add to string
         while (!tempStack.isEmpty()){
             postfixString = postfixString + tempStack.pop() + " ";
         }

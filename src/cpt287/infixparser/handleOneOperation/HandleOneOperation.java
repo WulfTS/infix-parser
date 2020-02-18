@@ -1,7 +1,7 @@
 package cpt287.infixparser.handleOneOperation;
 
 public class HandleOneOperation {
-
+    // handles operands and operator
     public Integer handleOneOperation(Integer leftVal, Integer rightVal, String oper){
         Integer leftInt = leftVal;
         Integer rightInt = rightVal;
@@ -71,6 +71,7 @@ public class HandleOneOperation {
                result = 0;
            }
        }
+       // return the result
         return result;
     }
 }
