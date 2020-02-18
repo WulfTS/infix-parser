@@ -5,9 +5,8 @@ import java.util.*;
 
 public class InputHandler {
 
-    Scanner scanner = new Scanner(System.in);
-
-    List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
+    public  Scanner scanner = new Scanner(System.in);
+    private List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
 
     public List<Queue<String>> getInputFromTextFile() throws IOException {
         ArrayList<Queue<String>> qStr = new ArrayList<Queue<String>>();

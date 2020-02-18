@@ -1,17 +1,11 @@
 package cpt287.infixparser.handleOneOperation;
 
-import java.util.Arrays;
-import java.util.List;
-
 public class HandleOneOperation {
 
     public Integer handleOneOperation(Integer leftVal, Integer rightVal, String oper){
         Integer leftInt = leftVal;
         Integer rightInt = rightVal;
         String operator = oper;
-
-        List<String> operators = Arrays.asList("+","-","*","/","^","%",">","<",">=","<=","==","!=", "||", "&&");
-
 
         Integer result = -1;
 

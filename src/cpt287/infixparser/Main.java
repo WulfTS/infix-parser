@@ -1,6 +1,5 @@
 package cpt287.infixparser;
 
-import cpt287.infixparser.handleOneOperation.HandleOneOperation;
 import cpt287.infixparser.infixtopostfix.InfixToPostfixConverter;
 import cpt287.infixparser.inputhandler.InputHandler;
 import cpt287.infixparser.postfixevaluator.PostfixEvaluator;
@@ -34,7 +33,7 @@ public class Main {
             }
         }
 
-
+        inputHandler.scanner.close();
 
     }
 }
