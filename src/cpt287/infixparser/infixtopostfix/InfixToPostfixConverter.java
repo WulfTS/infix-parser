@@ -101,7 +101,7 @@ public class InfixToPostfixConverter {
                 }
                 tempStack.push(userInputQueue.poll());
            } else if (userInputQueue.peek().equals(")")){
-                while (!tempStack.isEmpty() && !tempStack.peek().equals("("){
+                while (!tempStack.isEmpty() && !tempStack.peek().equals("(")){
                     postfixString = postfixString + tempStack.pop();
                     postfixString = postfixString + " ";
                 }

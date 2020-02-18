@@ -1,15 +1,27 @@
 package cpt287.infixparser.inputhandler;
 
+import java.io.*;
 import java.util.*;
 
 public class InputHandler {
 
     Scanner scanner = new Scanner(System.in);
 
-    Queue<String> outputQueue= new LinkedList<String>();
-
     List<Character> validCharacters = Arrays.asList('+','-','*','/','^','%','(',')','[',']','=','>','<','|','!','&');
 
+    public List<Queue<String>> getInputFromTextFile() throws IOException {
+        ArrayList<Queue<String>> qStr = new ArrayList<Queue<String>>();
+
+        File file = new File("input.txt");
+
+        BufferedReader br = new BufferedReader(new FileReader(file));
+
+        String st;
+        while ((st = br.readLine()) != null){
+            qStr.add(stringToQueue(st));
+        }
+        return qStr;
+    }
     public Queue<String> getUserInput() {
 
         System.out.println("Please enter an expression to evaluate: ");
@@ -20,6 +32,8 @@ public class InputHandler {
     }
 
     private Queue<String> stringToQueue(String inputString){
+        // create new outputQueue every time method is called for multiple expressions in text file
+        Queue<String> outputQueue= new LinkedList<String>();
         // remove white space
         inputString = inputString.replaceAll(" ","");
 
